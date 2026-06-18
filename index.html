@@ -36,19 +36,24 @@
 
   /* ── HERO ── */
   .hero {
-    background: linear-gradient(135deg, #0b1929 0%, #0f2744 50%, #162e52 100%);
+    background: #0b1929;
     padding: 72px 24px 80px;
     position: relative; overflow: hidden;
   }
-  .hero::before {
-    content: '';
+  .hero-bg {
     position: absolute; inset: 0;
-    background: radial-gradient(ellipse at 70% 50%, rgba(232,93,38,0.08) 0%, transparent 70%);
-    pointer-events: none;
+    background-image: url('https://www.lp.speedrackwest.com/warehouse-project-lp-1/assets/hero-warehouse-original-CNMkKJJN.jpeg');
+    background-size: cover; background-position: center;
+    opacity: 0.2;
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(90deg, rgba(11,25,41,0.97) 35%, rgba(11,25,41,0.5) 100%);
   }
   .hero .inner {
     max-width: 1100px; margin: 0 auto;
     display: grid; grid-template-columns: 1fr 400px; gap: 56px; align-items: center;
+    position: relative; z-index: 1;
   }
   .hero-eyebrow {
     display: inline-flex; align-items: center; gap: 8px;
@@ -162,6 +167,16 @@
   .process-card h4 { font-size: 15px; font-weight: 800; margin-bottom: 8px; color: #111; }
   .process-card p { font-size: 13px; color: #777; line-height: 1.55; }
 
+  /* ── PRODUCT SECTION ── */
+  .product-section { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+  .product-img { border-radius: 16px; overflow: hidden; box-shadow: 0 20px 60px rgba(0,0,0,0.12); }
+  .product-img img { width: 100%; height: 380px; object-fit: cover; display: block; }
+  .product-content h2 { font-size: 32px; font-weight: 900; line-height: 1.2; margin-bottom: 16px; letter-spacing: -0.5px; }
+  .product-content .section-lead { margin-bottom: 28px; }
+  .product-list { list-style: none; }
+  .product-list li { display: flex; align-items: flex-start; gap: 10px; font-size: 15px; color: #444; margin-bottom: 12px; line-height: 1.4; }
+  .product-list li .dot { width: 8px; height: 8px; background: #E85D26; border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+
   /* ── CASE STUDY ── */
   .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 32px; }
   .case-metric-card {
@@ -234,7 +249,7 @@
 <!-- NAV -->
 <nav>
   <div class="inner">
-    <div class="logo-text"><span class="orange">SPEEDRACK</span> WEST</div>
+    <img src="https://www.lp.speedrackwest.com/warehouse-project-lp-1/assets/speedrack-logo-horizontal-dark-wPzVMHUg.svg" alt="Speedrack West" height="36">
     <div class="nav-right">
       <a href="tel:5036766089" class="nav-phone">📞 503-676-6089</a>
       <a href="#form" class="nav-cta">Get a Free Quote</a>
@@ -244,6 +259,8 @@
 
 <!-- HERO -->
 <div class="hero" id="form">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
   <div class="inner">
     <div>
       <div class="hero-eyebrow">🏭 Trusted Warehouse Racking Company</div>
@@ -323,6 +340,28 @@
         <div class="step-badge">4</div>
         <h4>Professional Installation</h4>
         <p>Our certified crew installs and inspects. You sign off and start using it.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PRODUCT SECTION -->
+<div class="section alt">
+  <div class="section-inner">
+    <div class="product-section">
+      <div class="product-img">
+        <img src="https://www.lp.speedrackwest.com/warehouse-project-lp-1/assets/product-warehouse-v2-lZiF3UX1.png" alt="Warehouse racking systems installed by Speedrack West">
+      </div>
+      <div class="product-content">
+        <div class="eyebrow">Industrial Solutions</div>
+        <h2>Pallet Racking Systems Built for <span class="orange">Real Warehouses</span></h2>
+        <p class="section-lead">From selective pallet racking to cantilever and drive-in systems — we spec, supply, and install exactly what your operation needs.</p>
+        <ul class="product-list">
+          <li><span class="dot"></span> Selective, push-back & drive-in pallet racking</li>
+          <li><span class="dot"></span> Cantilever racks for lumber, pipe & long goods</li>
+          <li><span class="dot"></span> Mezzanine structures & industrial shelving</li>
+          <li><span class="dot"></span> Seismic-compliant engineering for West Coast facilities</li>
+        </ul>
       </div>
     </div>
   </div>
