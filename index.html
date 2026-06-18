@@ -3,268 +3,380 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Speedrack West — LP Proposal</title>
+<title>Speedrack West — Free Warehouse Layout & Quote</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Segoe UI', sans-serif; color: #1a1a1a; }
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Inter', sans-serif; color: #1a1a1a; background: #fff; -webkit-font-smoothing: antialiased; }
 
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+  /* ── NAV ── */
   nav {
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 16px 48px; background: #fff; border-bottom: 1px solid #eee;
+    background: #fff;
+    border-bottom: 1px solid #f0f0f0;
     position: sticky; top: 0; z-index: 100;
+    box-shadow: 0 1px 12px rgba(0,0,0,0.06);
   }
-  nav .logo { font-size: 22px; font-weight: 800; color: #E85D26; }
-  nav .logo span { color: #1a1a1a; }
-  nav .nav-right { display: flex; align-items: center; gap: 24px; }
-  nav .phone { font-size: 18px; font-weight: 700; color: #1a1a1a; text-decoration: none; }
-  nav .cta-nav {
-    background: #E85D26; color: #fff; padding: 10px 24px;
-    border-radius: 6px; font-weight: 700; font-size: 15px; text-decoration: none;
+  nav .inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    display: flex; justify-content: space-between; align-items: center; height: 68px;
   }
+  .logo-text { font-size: 20px; font-weight: 900; letter-spacing: -0.5px; }
+  .logo-text .orange { color: #E85D26; }
+  .nav-right { display: flex; align-items: center; gap: 20px; }
+  .nav-phone { font-size: 15px; font-weight: 700; color: #333; text-decoration: none; display: flex; align-items: center; gap: 6px; }
+  .nav-cta {
+    background: #E85D26; color: #fff; padding: 10px 22px;
+    border-radius: 8px; font-weight: 700; font-size: 14px; text-decoration: none;
+    transition: background 0.15s;
+  }
+  .nav-cta:hover { background: #d04e1f; }
 
+  /* ── HERO ── */
   .hero {
-    display: grid; grid-template-columns: 1fr 420px; gap: 48px;
-    align-items: center; padding: 64px 48px;
-    background: linear-gradient(135deg, #0d1b2a 0%, #1a3a5c 100%);
-    color: #fff; min-height: 90vh;
+    background: linear-gradient(135deg, #0b1929 0%, #0f2744 50%, #162e52 100%);
+    padding: 72px 24px 80px;
+    position: relative; overflow: hidden;
   }
-  .hero-badge {
-    display: inline-block; background: rgba(232,93,38,0.2);
-    border: 1px solid #E85D26; color: #E85D26; padding: 6px 16px;
-    border-radius: 20px; font-size: 13px; font-weight: 600; margin-bottom: 20px;
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(232,93,38,0.08) 0%, transparent 70%);
+    pointer-events: none;
   }
-  .hero h1 { font-size: 48px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; }
-  .hero h1 span { color: #E85D26; }
-  .hero p { font-size: 18px; color: rgba(255,255,255,0.8); line-height: 1.6; margin-bottom: 32px; max-width: 520px; }
-  .hero-bullets { list-style: none; margin-bottom: 40px; }
-  .hero-bullets li { display: flex; align-items: center; gap: 10px; font-size: 16px; color: rgba(255,255,255,0.9); margin-bottom: 12px; }
-  .hero-bullets li::before {
-    content: '✓'; background: #E85D26; color: #fff; width: 22px; height: 22px;
-    border-radius: 50%; display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 700; flex-shrink: 0;
+  .hero .inner {
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 400px; gap: 56px; align-items: center;
   }
-  .hero-trust { display: flex; gap: 32px; padding-top: 24px; border-top: 1px solid rgba(255,255,255,0.15); }
-  .hero-trust-item .number { font-size: 28px; font-weight: 900; color: #E85D26; }
-  .hero-trust-item .label { font-size: 12px; color: rgba(255,255,255,0.6); margin-top: 2px; }
-
-  .form-card { background: #fff; border-radius: 16px; padding: 36px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-  .form-card h3 { font-size: 22px; font-weight: 800; color: #1a1a1a; margin-bottom: 6px; }
-  .form-card .subtitle { font-size: 14px; color: #666; margin-bottom: 24px; line-height: 1.4; }
-  .form-card label { display: block; font-size: 13px; font-weight: 600; color: #444; margin-bottom: 6px; }
-  .form-card input {
-    width: 100%; border: 1.5px solid #ddd; border-radius: 8px;
-    padding: 12px 14px; font-size: 15px; margin-bottom: 16px; outline: none;
+  .hero-eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(232,93,38,0.15); border: 1px solid rgba(232,93,38,0.4);
+    color: #ff7a47; padding: 6px 14px; border-radius: 100px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+    margin-bottom: 24px;
   }
-  .form-card .submit-btn {
-    width: 100%; background: #E85D26; color: #fff; border: none;
-    padding: 16px; border-radius: 8px; font-size: 16px; font-weight: 700; cursor: pointer; margin-top: 4px;
+  .hero h1 {
+    font-size: 44px; font-weight: 900; line-height: 1.08;
+    color: #fff; margin-bottom: 20px; letter-spacing: -1px;
   }
-  .form-card .privacy { text-align: center; font-size: 12px; color: #999; margin-top: 12px; }
-  .form-card .urgency {
-    background: #fff8f5; border: 1px solid #ffd4c2; border-radius: 8px;
-    padding: 10px 14px; font-size: 13px; color: #c94e1f; font-weight: 600;
-    text-align: center; margin-bottom: 20px;
+  .hero h1 .orange { color: #E85D26; }
+  .hero-sub {
+    font-size: 17px; color: rgba(255,255,255,0.7);
+    line-height: 1.65; margin-bottom: 32px; max-width: 480px;
   }
-
-  .stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: #f8f8f8; border-bottom: 1px solid #eee; }
-  .stat-item { text-align: center; padding: 28px 16px; border-right: 1px solid #eee; }
-  .stat-item:last-child { border-right: none; }
-  .stat-item .num { font-size: 32px; font-weight: 900; color: #E85D26; }
-  .stat-item .lbl { font-size: 13px; color: #666; margin-top: 4px; }
-
-  section { padding: 72px 48px; }
-  .section-label { font-size: 13px; font-weight: 700; color: #E85D26; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
-  section h2 { font-size: 36px; font-weight: 900; color: #1a1a1a; margin-bottom: 16px; line-height: 1.2; }
-  section h2 span { color: #E85D26; }
-  section .lead { font-size: 18px; color: #555; line-height: 1.6; max-width: 640px; margin-bottom: 48px; }
-
-  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
-  .process-step { background: #f8f8f8; border-radius: 12px; padding: 28px 24px; }
-  .step-num {
-    width: 40px; height: 40px; background: #E85D26; color: #fff; border-radius: 50%;
+  .hero-checks { list-style: none; margin-bottom: 40px; }
+  .hero-checks li {
+    display: flex; align-items: flex-start; gap: 10px;
+    font-size: 15px; color: rgba(255,255,255,0.88);
+    margin-bottom: 10px; line-height: 1.4;
+  }
+  .check-icon {
+    width: 20px; height: 20px; background: #E85D26; border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
-    font-size: 18px; font-weight: 900; margin-bottom: 16px;
+    flex-shrink: 0; margin-top: 1px;
+    font-size: 11px; color: #fff; font-weight: 800;
   }
-  .process-step h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
-  .process-step p { font-size: 14px; color: #666; line-height: 1.5; }
+  .hero-stats {
+    display: flex; gap: 28px; flex-wrap: wrap;
+    padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .hero-stat .val { font-size: 26px; font-weight: 900; color: #E85D26; }
+  .hero-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.5); margin-top: 2px; line-height: 1.3; }
 
-  .case-study { background: #0d1b2a; color: #fff; }
-  .case-study h2 { color: #fff; }
-  .case-study .lead { color: rgba(255,255,255,0.7); }
-  .case-card {
-    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-    border-radius: 16px; padding: 40px;
-    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; align-items: center;
+  /* ── FORM CARD ── */
+  .form-card {
+    background: #fff; border-radius: 20px; padding: 36px 32px;
+    box-shadow: 0 24px 80px rgba(0,0,0,0.35), 0 0 0 1px rgba(255,255,255,0.05);
   }
-  .case-metric { text-align: center; }
-  .case-metric .metric-val { font-size: 42px; font-weight: 900; color: #E85D26; }
-  .case-metric .metric-lbl { font-size: 14px; color: rgba(255,255,255,0.6); margin-top: 4px; }
-  .case-quote {
-    grid-column: 1 / -1; border-top: 1px solid rgba(255,255,255,0.1);
-    padding-top: 28px; font-size: 18px; font-style: italic;
-    color: rgba(255,255,255,0.85); line-height: 1.6;
+  .form-urgency {
+    background: linear-gradient(90deg, #fff5f0, #fff8f5);
+    border: 1.5px solid #ffd0bc; border-radius: 10px;
+    padding: 10px 14px; margin-bottom: 22px;
+    display: flex; align-items: center; gap: 8px;
+    font-size: 13px; font-weight: 700; color: #c94e1f;
   }
-  .case-quote strong { color: #fff; font-style: normal; }
+  .form-card h3 { font-size: 20px; font-weight: 800; color: #111; margin-bottom: 4px; }
+  .form-card .form-sub { font-size: 13px; color: #888; margin-bottom: 24px; line-height: 1.5; }
+  .form-card label { display: block; font-size: 12px; font-weight: 700; color: #555; margin-bottom: 5px; letter-spacing: 0.3px; }
+  .form-card input {
+    width: 100%; border: 1.5px solid #e8e8e8; border-radius: 10px;
+    padding: 11px 14px; font-size: 14px; margin-bottom: 14px;
+    outline: none; font-family: inherit; color: #111;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .form-card input:focus { border-color: #E85D26; box-shadow: 0 0 0 3px rgba(232,93,38,0.1); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .submit-btn {
+    width: 100%; background: #E85D26; color: #fff; border: none;
+    padding: 15px; border-radius: 10px; font-size: 15px; font-weight: 800;
+    cursor: pointer; font-family: inherit; margin-top: 6px;
+    transition: background 0.15s, transform 0.1s;
+  }
+  .submit-btn:hover { background: #d04e1f; transform: translateY(-1px); }
+  .form-privacy { text-align: center; font-size: 12px; color: #aaa; margin-top: 12px; display: flex; align-items: center; justify-content: center; gap: 5px; }
 
-  .faq { background: #f8f8f8; }
+  /* ── STATS BAR ── */
+  .stats-bar {
+    background: #fff; border-bottom: 1px solid #f0f0f0;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  }
+  .stats-bar .inner {
+    max-width: 1100px; margin: 0 auto; padding: 0 24px;
+    display: grid; grid-template-columns: repeat(4, 1fr);
+  }
+  .stat-cell {
+    text-align: center; padding: 28px 16px;
+    border-right: 1px solid #f0f0f0;
+  }
+  .stat-cell:last-child { border-right: none; }
+  .stat-cell .n { font-size: 30px; font-weight: 900; color: #E85D26; }
+  .stat-cell .l { font-size: 12px; color: #777; margin-top: 3px; line-height: 1.4; }
+
+  /* ── SECTIONS ── */
+  .section { padding: 80px 24px; }
+  .section.alt { background: #f8f9fb; }
+  .section.dark { background: #0b1929; color: #fff; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .eyebrow { font-size: 11px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase; color: #E85D26; margin-bottom: 12px; }
+  .section h2 { font-size: 34px; font-weight: 900; line-height: 1.15; letter-spacing: -0.5px; margin-bottom: 14px; }
+  .section h2 .orange { color: #E85D26; }
+  .section.dark h2 { color: #fff; }
+  .section-lead { font-size: 17px; color: #666; line-height: 1.65; max-width: 560px; margin-bottom: 48px; }
+  .section.dark .section-lead { color: rgba(255,255,255,0.6); }
+
+  /* ── PROCESS ── */
+  .process-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+  .process-card {
+    background: #fff; border-radius: 14px; padding: 28px 22px;
+    border: 1.5px solid #f0f0f0; position: relative;
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+  .process-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .step-badge {
+    width: 38px; height: 38px; background: #E85D26; color: #fff;
+    border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    font-size: 17px; font-weight: 900; margin-bottom: 16px;
+  }
+  .process-card h4 { font-size: 15px; font-weight: 800; margin-bottom: 8px; color: #111; }
+  .process-card p { font-size: 13px; color: #777; line-height: 1.55; }
+
+  /* ── CASE STUDY ── */
+  .case-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-bottom: 32px; }
+  .case-metric-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+    padding: 32px; text-align: center; border-radius: 14px;
+  }
+  .case-metric-card .mv { font-size: 40px; font-weight: 900; color: #E85D26; }
+  .case-metric-card .ml { font-size: 13px; color: rgba(255,255,255,0.5); margin-top: 6px; }
+  .case-quote-box {
+    background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px; padding: 36px; margin-top: 20px;
+  }
+  .quote-text { font-size: 18px; font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.7; margin-bottom: 20px; }
+  .quote-author { font-size: 14px; font-weight: 700; color: #E85D26; }
+
+  /* ── FAQ ── */
   .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .faq-item { background: #fff; border-radius: 10px; padding: 24px; }
-  .faq-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-  .faq-item p { font-size: 14px; color: #666; line-height: 1.5; }
-
-  .bottom-cta { background: #E85D26; color: #fff; text-align: center; padding: 64px 48px; }
-  .bottom-cta h2 { font-size: 36px; font-weight: 900; margin-bottom: 12px; color: #fff; }
-  .bottom-cta p { font-size: 18px; margin-bottom: 32px; opacity: 0.9; }
-  .bottom-cta .btn {
-    display: inline-block; background: #fff; color: #E85D26;
-    padding: 16px 40px; border-radius: 8px; font-size: 18px; font-weight: 800; text-decoration: none;
+  .faq-card {
+    background: #fff; border-radius: 12px; padding: 24px 22px;
+    border: 1.5px solid #eee;
   }
+  .faq-card h4 { font-size: 14px; font-weight: 800; color: #111; margin-bottom: 8px; line-height: 1.4; }
+  .faq-card p { font-size: 13px; color: #777; line-height: 1.6; }
 
-  .tag { display: inline-block; background: #E85D26; color: #fff; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 4px; }
-  .tag.green { background: #22c55e; }
+  /* ── BOTTOM CTA ── */
+  .bottom-cta {
+    background: linear-gradient(135deg, #E85D26, #c94e1f);
+    padding: 80px 24px; text-align: center;
+  }
+  .bottom-cta h2 { font-size: 36px; font-weight: 900; color: #fff; margin-bottom: 12px; letter-spacing: -0.5px; }
+  .bottom-cta p { font-size: 18px; color: rgba(255,255,255,0.85); margin-bottom: 36px; }
+  .bottom-cta .cta-btn {
+    display: inline-block; background: #fff; color: #E85D26;
+    padding: 16px 40px; border-radius: 10px; font-size: 17px;
+    font-weight: 800; text-decoration: none; transition: transform 0.15s;
+  }
+  .bottom-cta .cta-btn:hover { transform: translateY(-2px); }
 
-  .changes-bar { background: #1a1a2e; color: #fff; padding: 24px 48px; }
-  .changes-bar h3 { font-size: 16px; font-weight: 700; margin-bottom: 12px; color: #E85D26; }
-  .changes-bar ul { list-style: none; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px 32px; }
-  .changes-bar li { padding: 4px 0; font-size: 14px; }
-  .changes-bar li::before { content: '→ '; color: #E85D26; font-weight: 700; }
+  /* ── CHANGE NOTES ── */
+  .change-notes {
+    background: #111827; color: #fff; padding: 20px 24px;
+    border-left: 4px solid #E85D26;
+  }
+  .change-notes .inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+  .change-notes strong { color: #E85D26; font-size: 13px; white-space: nowrap; }
+  .change-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+  .ctag {
+    background: rgba(232,93,38,0.15); border: 1px solid rgba(232,93,38,0.3);
+    color: #ff7a47; padding: 3px 10px; border-radius: 100px; font-size: 12px; font-weight: 600;
+  }
 </style>
 </head>
 <body>
 
-<div class="changes-bar">
-  <h3>Principais mudanças vs LP atual:</h3>
-  <ul>
-    <li>Navegação reduzida (sem menu)</li>
-    <li>Formulário no hero (acima do fold)</li>
-    <li>Apenas 4 campos no formulário</li>
-    <li>Oferta menos invasiva</li>
-    <li>Urgência adicionada</li>
-    <li>Prova social mais cedo</li>
-  </ul>
+<!-- CHANGE NOTES -->
+<div class="change-notes">
+  <div class="inner">
+    <strong>VS LP ATUAL:</strong>
+    <div class="change-tags">
+      <span class="ctag">Nav reduzida</span>
+      <span class="ctag">Form acima do fold</span>
+      <span class="ctag">4 campos apenas</span>
+      <span class="ctag">Oferta menos invasiva</span>
+      <span class="ctag">Urgência no form</span>
+      <span class="ctag">Stats visíveis no hero</span>
+    </div>
+  </div>
 </div>
 
+<!-- NAV -->
 <nav>
-  <div class="logo">SPEEDRACK <span>WEST</span></div>
-  <div class="nav-right">
-    <a href="tel:5036766089" class="phone">📞 503-676-6089</a>
-    <a href="#form" class="cta-nav">Get a Free Quote</a>
+  <div class="inner">
+    <div class="logo-text"><span class="orange">SPEEDRACK</span> WEST</div>
+    <div class="nav-right">
+      <a href="tel:5036766089" class="nav-phone">📞 503-676-6089</a>
+      <a href="#form" class="nav-cta">Get a Free Quote</a>
+    </div>
   </div>
 </nav>
 
+<!-- HERO -->
 <div class="hero" id="form">
-  <div>
-    <div class="hero-badge">🏭 Trusted Warehouse Racking Company</div>
-    <h1>One Team for Your Entire Warehouse Racking <span>Project.</span></h1>
-    <p>Design, permits, installation — we handle everything from first call to final sign-off. No separate vendors. No dropped balls.</p>
-    <ul class="hero-bullets">
-      <li>Custom pallet racking systems & cantilever racks</li>
-      <li>Engineering, permits & compliance included</li>
-      <li>CAD layout delivered in 24 hours</li>
-      <li>Licensed industrial racking contractor</li>
-    </ul>
-    <div class="hero-trust">
-      <div class="hero-trust-item"><div class="number">350+</div><div class="label">Projects Installed</div></div>
-      <div class="hero-trust-item"><div class="number">24hr</div><div class="label">Quote Turnaround</div></div>
-      <div class="hero-trust-item"><div class="number">100%</div><div class="label">Safety Compliance</div></div>
-      <div class="hero-trust-item"><div class="number">30%+</div><div class="label">Space Optimization</div></div>
+  <div class="inner">
+    <div>
+      <div class="hero-eyebrow">🏭 Trusted Warehouse Racking Company</div>
+      <h1>One Team for Your Entire<br>Warehouse Racking <span class="orange">Project.</span></h1>
+      <p class="hero-sub">Design, permits, installation — we handle everything from first call to final sign-off. No separate vendors. No dropped balls.</p>
+      <ul class="hero-checks">
+        <li><span class="check-icon">✓</span> Custom pallet racking systems & cantilever racks</li>
+        <li><span class="check-icon">✓</span> Engineering, permits & compliance included</li>
+        <li><span class="check-icon">✓</span> CAD layout delivered within 24 hours</li>
+        <li><span class="check-icon">✓</span> Licensed industrial racking contractor</li>
+      </ul>
+      <div class="hero-stats">
+        <div class="hero-stat"><div class="val">350+</div><div class="lbl">Projects<br>Installed</div></div>
+        <div class="hero-stat"><div class="val">24hr</div><div class="lbl">Quote<br>Turnaround</div></div>
+        <div class="hero-stat"><div class="val">100%</div><div class="lbl">Safety<br>Compliance</div></div>
+        <div class="hero-stat"><div class="val">30%+</div><div class="lbl">Space<br>Optimization</div></div>
+      </div>
     </div>
-  </div>
 
-  <div class="form-card">
-    <div class="urgency">⚡ 3 layout slots available this week</div>
-    <h3>Get Your Free Warehouse Layout</h3>
-    <p class="subtitle">No commitment. No sales pressure. Just a custom layout plan for your facility.</p>
-    <label>First Name *</label>
-    <input type="text" placeholder="John">
-    <label>Company Name *</label>
-    <input type="text" placeholder="Acme Logistics">
-    <label>Email *</label>
-    <input type="email" placeholder="john@company.com">
-    <label>Phone *</label>
-    <input type="tel" placeholder="(503) 000-0000">
-    <button class="submit-btn">Get My Free Layout Plan →</button>
-    <p class="privacy">🔒 No spam. We'll call you within 1 business day.</p>
+    <div class="form-card">
+      <div class="form-urgency">⚡ Only 3 layout slots available this week</div>
+      <h3>Get Your Free Warehouse Layout</h3>
+      <p class="form-sub">No commitment. No sales pressure. A custom layout plan for your facility — free.</p>
+      <div class="form-row">
+        <div>
+          <label>FIRST NAME *</label>
+          <input type="text" placeholder="John">
+        </div>
+        <div>
+          <label>COMPANY *</label>
+          <input type="text" placeholder="Acme Logistics">
+        </div>
+      </div>
+      <label>EMAIL ADDRESS *</label>
+      <input type="email" placeholder="john@company.com">
+      <label>PHONE NUMBER *</label>
+      <input type="tel" placeholder="(503) 000-0000">
+      <button class="submit-btn">Get My Free Layout Plan →</button>
+      <p class="form-privacy">🔒 No spam. We'll call you within 1 business day.</p>
+    </div>
   </div>
 </div>
 
+<!-- STATS BAR -->
 <div class="stats-bar">
-  <div class="stat-item"><div class="num">350+</div><div class="lbl">Warehouse Racking Systems Installed</div></div>
-  <div class="stat-item"><div class="num">24hr</div><div class="lbl">CAD Layout Turnaround</div></div>
-  <div class="stat-item"><div class="num">100%</div><div class="lbl">Safety & Compliance Rate</div></div>
-  <div class="stat-item"><div class="num">30%+</div><div class="lbl">Average Space Improvement</div></div>
+  <div class="inner">
+    <div class="stat-cell"><div class="n">350+</div><div class="l">Racking Systems<br>Installed</div></div>
+    <div class="stat-cell"><div class="n">24hr</div><div class="l">CAD Layout<br>Turnaround</div></div>
+    <div class="stat-cell"><div class="n">100%</div><div class="l">Safety &<br>Compliance Rate</div></div>
+    <div class="stat-cell"><div class="n">30%+</div><div class="l">Average Space<br>Improvement</div></div>
+  </div>
 </div>
 
-<section>
-  <div class="section-label">How It Works</div>
-  <h2>From First Call to <span>Final Sign-Off</span></h2>
-  <p class="lead">Four steps. One team. Zero handoffs.</p>
-  <div class="process-grid">
-    <div class="process-step">
-      <div class="step-num">1</div>
-      <h4>Tell Us What You Need</h4>
-      <p>Share your facility details and storage goals. No obligation.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">2</div>
-      <h4>Get a Custom CAD Layout</h4>
-      <p>Our specialists design a racking system for your space within 24 hours.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">3</div>
-      <h4>We Handle Permits</h4>
-      <p>Engineering drawings, permits, and compliance — all handled by our team.</p>
-    </div>
-    <div class="process-step">
-      <div class="step-num">4</div>
-      <h4>Professional Installation</h4>
-      <p>Our certified crew installs and inspects. You sign off and start using it.</p>
-    </div>
-  </div>
-</section>
-
-<section class="case-study">
-  <div class="section-label">Real Results</div>
-  <h2>Levi's Sawmill: From Backyard to <span>12-Acre Industrial Storage</span></h2>
-  <p class="lead">A real client. A real transformation.</p>
-  <div class="case-card">
-    <div class="case-metric"><div class="metric-val">12ac</div><div class="metric-lbl">Industrial storage built</div></div>
-    <div class="case-metric"><div class="metric-val">1 team</div><div class="metric-lbl">End-to-end execution</div></div>
-    <div class="case-metric"><div class="metric-val">On time</div><div class="metric-lbl">Delivered as promised</div></div>
-    <div class="case-quote">
-      "Speedrack West will actually walk you through the steps, do your research, but most likely you're going to come back to Speedrack West."
-      <br><br><strong>— Levi's Sawmill Client</strong>
+<!-- PROCESS -->
+<div class="section">
+  <div class="section-inner">
+    <div class="eyebrow">How It Works</div>
+    <h2>From First Call to <span class="orange">Final Sign-Off</span></h2>
+    <p class="section-lead">Four steps. One team. Zero handoffs between vendors.</p>
+    <div class="process-grid">
+      <div class="process-card">
+        <div class="step-badge">1</div>
+        <h4>Tell Us What You Need</h4>
+        <p>Share your facility details and storage goals. Takes 5 minutes. No obligation.</p>
+      </div>
+      <div class="process-card">
+        <div class="step-badge">2</div>
+        <h4>Get a Custom CAD Layout</h4>
+        <p>Our specialists design a racking system tailored to your space within 24 hours.</p>
+      </div>
+      <div class="process-card">
+        <div class="step-badge">3</div>
+        <h4>We Handle Permits</h4>
+        <p>Engineering drawings, permits, and compliance — all covered by our team.</p>
+      </div>
+      <div class="process-card">
+        <div class="step-badge">4</div>
+        <h4>Professional Installation</h4>
+        <p>Our certified crew installs and inspects. You sign off and start using it.</p>
+      </div>
     </div>
   </div>
-</section>
+</div>
 
-<section class="faq">
-  <div class="section-label">FAQ</div>
-  <h2>Frequently Asked <span>Questions</span></h2>
-  <div class="faq-grid">
-    <div class="faq-item">
-      <h4>What does a complete warehouse racking systems project include?</h4>
-      <p>Site survey, CAD layout design, engineering drawings, permits, installation, and final inspection — all under one roof.</p>
+<!-- CASE STUDY -->
+<div class="section dark">
+  <div class="section-inner">
+    <div class="eyebrow">Real Results</div>
+    <h2>Levi's Sawmill: From Backyard to <span class="orange">12-Acre Industrial Storage</span></h2>
+    <p class="section-lead">A real client. A real transformation. One team from start to finish.</p>
+    <div class="case-grid">
+      <div class="case-metric-card"><div class="mv">12ac</div><div class="ml">Industrial storage built</div></div>
+      <div class="case-metric-card"><div class="mv">1 team</div><div class="ml">End-to-end execution</div></div>
+      <div class="case-metric-card"><div class="mv">On time</div><div class="ml">Delivered as promised</div></div>
     </div>
-    <div class="faq-item">
-      <h4>Do you handle permits for pallet racking systems and warehouse racking installation?</h4>
-      <p>Yes. We manage all permitting, engineering stamps, and compliance documentation so you don't have to.</p>
-    </div>
-    <div class="faq-item">
-      <h4>How fast can you deliver and install warehouse racking systems?</h4>
-      <p>CAD layout within 24 hours. Installation timeline depends on project scope — we'll give you a clear schedule upfront.</p>
-    </div>
-    <div class="faq-item">
-      <h4>What areas do you serve as a warehouse racking company?</h4>
-      <p>We serve warehouses nationwide with fast delivery and certified installation crews.</p>
+    <div class="case-quote-box">
+      <p class="quote-text">"Speedrack West will actually walk you through the steps, do your research, but most likely you're going to come back to Speedrack West."</p>
+      <div class="quote-author">— Levi's Sawmill Client</div>
     </div>
   </div>
-</section>
+</div>
 
+<!-- FAQ -->
+<div class="section alt">
+  <div class="section-inner">
+    <div class="eyebrow">FAQ</div>
+    <h2>Frequently Asked <span class="orange">Questions</span></h2>
+    <div class="faq-grid">
+      <div class="faq-card">
+        <h4>What does a complete warehouse racking systems project include?</h4>
+        <p>Site survey, CAD layout design, engineering drawings, permits, installation, and final inspection — all under one roof.</p>
+      </div>
+      <div class="faq-card">
+        <h4>Do you handle permits for pallet racking systems and warehouse racking installation?</h4>
+        <p>Yes. We manage all permitting, engineering stamps, and compliance documentation so you don't have to.</p>
+      </div>
+      <div class="faq-card">
+        <h4>How fast can you deliver and install warehouse racking systems?</h4>
+        <p>CAD layout within 24 hours. Installation timeline depends on project scope — we'll give you a clear schedule upfront.</p>
+      </div>
+      <div class="faq-card">
+        <h4>What areas do you serve as a warehouse racking company?</h4>
+        <p>We serve warehouses nationwide with fast delivery and certified installation crews.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- BOTTOM CTA -->
 <div class="bottom-cta">
   <h2>Ready to Maximize Your Warehouse Space?</h2>
   <p>Get a free custom layout plan — no commitment, no sales pressure.</p>
-  <a href="#form" class="btn">Get My Free Layout Plan →</a>
+  <a href="#form" class="cta-btn">Get My Free Layout Plan →</a>
 </div>
 
 </body>
